@@ -1,0 +1,18 @@
+Orc:
+  name: Orc
+  AC: 13
+  HP:
+    dice: 2d8+6
+    average: 15
+  speed: 30
+  abilities:
+    S: 16
+    I: 12
+    W: 16
+    D: 7
+    C: 11
+    H: 10
+  languages: [Common,Orc]
+  weapons:
+    - Greataxe
+

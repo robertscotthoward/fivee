@@ -1,0 +1,12 @@
+name: Sample
+players:
+  - name: Storm Meister
+    race: Halfelf
+    class:
+      fighter:
+        level: 1
+    hitpoints: 10
+    conditions:
+      charmed: ~
+
+monsters: ~
