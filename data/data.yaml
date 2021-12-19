@@ -74,6 +74,22 @@ conditions:
   paralyzed:
     action: N-
 
+damagetypes:
+  Acid: ~
+  Bludgeoning: ~
+  Cold: ~
+  Fire: ~
+  Force: ~
+  Lightning: ~
+  Necrotic: ~
+  Piercing: ~
+  Poison: ~
+  Psychic: ~
+  Radiant: ~
+  Slashing: ~
+  Thunder: ~
+
+
 difficult:
   Very easy: 5
   Easy: 10

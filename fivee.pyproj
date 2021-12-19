@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{255ac952-41e0-47ea-bd63-5e35c5e3119c}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>money.py</StartupFile>
+    <StartupFile>tools.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -19,6 +19,7 @@
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="data.py" />
     <Compile Include="money.py" />
     <Compile Include="weapon.py" />
     <Compile Include="dice.py" />
