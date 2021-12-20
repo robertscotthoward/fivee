@@ -3,6 +3,30 @@ import os
 import yaml
 
 
+class FluidIterator:
+  def __init__(self, fluid):
+    self.fluid = fluid
+
+  def __iter__(self):
+    data = self.fluid.__dict__["_data"]
+    return data.__iter__()
+
+  def __next__(self):
+    data = self.__dict__["_data"]
+    return data.__next__()
+    if data:
+      if type(data) is list:
+        if self._key < len(data):
+          current = data[self._key]
+          self._key += 1
+          return current
+      if type(data) is dict:
+          current = data.keys()[self._key]
+          self._key += 1
+          return current
+    raise StopIteration
+
+
 class Fluid:
   '''
   A Fluid object is one that can model a dict or list, but can be used in a dotted javascript-like manner.
@@ -56,8 +80,8 @@ class Fluid:
     "Called when: myObject[n]. Returns None if n is out of the list range."
     data = self.__dict__["_data"]
     if not data: return None
-    if key < 0: return None
-    if key >= len(data): return None
+    #if key < 0: return None
+    #if key >= len(data): return None
     o = data[key]
     if type(o) is dict or type(o) is list:
       data[key] = Fluid(o)
@@ -144,7 +168,7 @@ def ReadYaml(fn):
   with open(dn) as f:
     data = yaml.safe_load(f)
     subloadYaml(data)
-    return data
+    return Fluid(data)
 
 
 def WriteYaml(fn, obj):
@@ -205,11 +229,11 @@ states:
 
     f = Fluid(o)
     self.assertEqual("dog", f.animals[1])
-    self.assertEqual(None, f.animals[999])
-    f.animals[999] = "rabbit"
-    self.assertEqual(None, f.animals[998])
-    self.assertEqual("rabbit", f.animals[999])
-    self.assertEqual(None, f.animals[1000])
+    f.animals[9] = "rabbit"
+    self.assertEqual(None, f.animals[8])
+    self.assertEqual("rabbit", f.animals[9])
+    with self.assertRaises(IndexError):
+      f.animals[10]
     self.assertEqual("Fred", f.fred.first)
     self.assertEqual("Flintstone", f.fred.last)
     self.assertEqual("Wilma", f.wilma.first)
@@ -220,6 +244,9 @@ states:
 
     f.states[2].capital = "Whatever"
     self.assertEqual("Whatever", f.states[2].capital)
+
+    for animal in f.animals:
+      print(animal)
 
   def test_FluidNew(self):
     f = Fluid()
