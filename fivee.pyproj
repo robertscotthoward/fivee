@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{255ac952-41e0-47ea-bd63-5e35c5e3119c}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>tools.py</StartupFile>
+    <StartupFile>data.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>

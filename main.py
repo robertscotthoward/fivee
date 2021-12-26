@@ -5,7 +5,7 @@ data = {}
 campaign={}
 
 # Load the data.yaml into memory
-data = ReadYaml("data.yaml")
+data = Fluid(ReadYaml("data.yaml"))
 
 # Pretty-print the data file:
 # print(yaml.dump(data, indent=2, default_flow_style=False))
@@ -32,7 +32,7 @@ def ChooseCampaign():
     name = input("Which campaign: ")
     fn = f"campaigns/{name}.yaml"
     if DataFileExists(fn):
-      return ReadYaml(fn)
+      return Fluid(ReadYaml(fn))
     if not YN("Campaign does not exist. Create it? [y]: "):
       continue
 

@@ -18,7 +18,7 @@ class Data (Fluid):
     """
     if not data:
       data = ReadYaml("data.yaml")
-    self.data = data
+    super().__init__(data)
     
   def GetAbility(self, key):
     """
@@ -28,16 +28,17 @@ class Data (Fluid):
     ASSERT: ability == 
     """
     key = key.lower();
-    for ability in self.data['abilities']:
-      if ability['abbr'].lower() == key: return ability
-      if ability['symbol'].lower() == key: return ability
-      if ability['name'].lower() == key: return ability
+    for ability in self.abilities:
+      if ability.abbr.lower() == key: return ability
+      if ability.symbol.lower() == key: return ability
+      if ability.name.lower() == key: return ability
     raise Exception(f"Ability '{key}' not found.")
 
 
 class DataTests(unittest.TestCase):
   def test_abilities(self):
     data = Data()
+    self.assertEqual(6, len(data.abilities))
     ability = data.GetAbility("s")
     self.assertEqual("Strength", ability['name'])
     ability = data.GetAbility("S")

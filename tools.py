@@ -120,6 +120,12 @@ class Fluid:
           data[i] = v
     return data
 
+  def __len__(self):
+    if self.__dict__["_data"] == None: return 0
+    data = self.__dict__["_data"]
+    return len(data)
+
+
   def __str__(self):
     if self.__dict__["_data"] == None: return ""
     s = yaml.dump(self.normalize())
@@ -168,7 +174,7 @@ def ReadYaml(fn):
   with open(dn) as f:
     data = yaml.safe_load(f)
     subloadYaml(data)
-    return Fluid(data)
+    return data
 
 
 def WriteYaml(fn, obj):
@@ -270,6 +276,10 @@ states:
 - null
 - Hi
     """.strip(), str(f).strip())
+
+  def test_WriteFluid(self):
+    data = ParseYaml("numbers: [1,2,3]")
+    WriteYaml("testwritedata", data)
 
 
 if __name__ == '__main__':
