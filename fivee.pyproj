@@ -21,6 +21,7 @@
   <ItemGroup>
     <Compile Include="data.py" />
     <Compile Include="money.py" />
+    <Compile Include="fluid.py" />
     <Compile Include="weapon.py" />
     <Compile Include="dice.py" />
     <Compile Include="main.py" />

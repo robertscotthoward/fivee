@@ -3,9 +3,11 @@ import unittest
 import math
 import re
 import random
+import fluid
 from tools import *
 
-class Data (Fluid):
+
+class Data (fluid.Fluid):
   """
   This class wraps the entire data.yaml file. You can substitute your own if needed.
   But this class ensures that the yaml conforms to expectations.
