@@ -97,6 +97,7 @@ class Fluid:
           data[i] = v
     return data
 
+
   def __nonzero__(self):
     """
     Defines behavior for when bool() is called on an instance of your class. Should return True or False, 

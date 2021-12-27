@@ -127,6 +127,11 @@ pets:
     data = ParseYaml("'Hi'")
     self.assertTrue(data)
 
+  def test_Add(self):
+    data = ParseYaml("[1,2]")
+    d = data + [3,4]
+    self.assertEqual("[1, 2, 3, 4]", str(d))
+    
 
 if __name__ == '__main__':
   unittest.main()
