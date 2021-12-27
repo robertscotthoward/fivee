@@ -11,6 +11,10 @@ class Dice:
     N is the number of dice to roll (default = 1)
     D is the type of die; can be any sided die; e.g. 33
     A is the optional adjustment to add to the sum of the dice
+
+    USAGE:
+      dice = Dice("3d6")
+      print(dice)
     """
     self.dice = dice
     # See https://pythex.org/
@@ -33,6 +37,14 @@ class Dice:
         n -= self.A
     return n
 
+  def __str__(self):
+    return str(self.Role())
+
+  def __int__(self):
+    return self.Role()
+
+  def __float__(self):
+    return float(self.Role())
 
 
 class DiceTests(unittest.TestCase):

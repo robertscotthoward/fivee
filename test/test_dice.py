@@ -23,6 +23,20 @@ class DiceTests(unittest.TestCase):
       self.Role10("3d6-3", "2,5,7,8,2,8,7,3,7,7")
       self.Role10("d2-1", "0,1,0,1,1,0,0,1,1,1")
 
+  def test_str(self):
+    dice = Dice("3d6", 111)
+    self.assertEqual("9", str(dice))
+    self.assertEqual("10", str(dice))
+    self.assertEqual("13", str(dice))
+    self.assertEqual("12", str(dice))
+
+  def test_int(self):
+    dice = Dice("3d6", 111)
+    self.assertEqual(9, int(dice))
+    self.assertEqual(10, int(dice))
+    self.assertEqual(13, int(dice))
+    self.assertEqual(12, int(dice))
+    self.assertEqual(9, float(dice))
 
 if __name__ == '__main__':
     unittest.main()
