@@ -81,13 +81,3 @@ def YN(prompt='', default=True):
   if a == '1': return True
   if a == 'T': return True
   return False
-
-
-
-
-class ToolsTests(unittest.TestCase):
-  def test_1(self):
-    pass
-
-if __name__ == '__main__':
-  unittest.main()

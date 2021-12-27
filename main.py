@@ -1,3 +1,4 @@
+from fluid import Fluid
 from tools import *
 import os
 import yaml
