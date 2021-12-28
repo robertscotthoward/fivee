@@ -8,14 +8,6 @@ campaign={}
 # Load the data.yaml into memory
 data = Fluid(ReadYaml("data.yaml"))
 
-# Pretty-print the data file:
-# print(yaml.dump(data, indent=2, default_flow_style=False))
-
-for a in data['abilities']:
-  print(f"{a['name']} ({a['abbr'].upper()})")
-  if a['abbr'] == 'con':
-    print("******************************")
-
 
 def CreateCampaign(name):
   '''

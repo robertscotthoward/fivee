@@ -12,6 +12,7 @@
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterId />
+    <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -39,6 +40,7 @@
   <ItemGroup>
     <Folder Include="data\" />
     <Folder Include="data\campaigns\" />
+    <Folder Include="docs\" />
     <Folder Include="test\" />
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +50,8 @@
     <Content Include="data\monsters.yaml" />
     <Content Include="data\weapons.yaml" />
     <Content Include="data\proficiencies.yaml" />
+    <Content Include="docs\fluid.md" />
+    <Content Include="docs\main.md" />
     <Content Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

@@ -102,6 +102,29 @@ pets:
 - Hi
     """.strip(), str(f).strip())
 
+  def test_FluidNew1(self):
+    f = Fluid()
+    f.people = []
+
+    f.people += {}
+    f.people[-1].first = "Fred"
+    f.people[-1].last = "Flintstone"
+    f.people[-1].pets = []
+    f.people[-1].pets += "Dino"
+    f.people[-1].pets += "Baby Puss"
+
+    f.people += {}
+    f.people[-1].first = "Barnay"
+    f.people[-1].last = "Rubble"
+
+    # Find and update
+    index = [i for i,x in enumerate(f.people) if x.first == "Barnay"][0]
+    f.people[index].first = "Barney"
+
+    #print()
+    #print(str(f))
+
+
   def test_WriteFluid(self):
     data = ParseYaml("numbers: [1,2,3]")
     WriteYaml("testwritedata", data)

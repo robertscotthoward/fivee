@@ -112,9 +112,11 @@ class Fluid:
 
   def __add__(self, other):
     if not self.__dict__["_data"]:
-      return None
+      self.__dict__["_data"] = []
     data = self.__dict__["_data"]
-    return data + other
+    if type(other) is list:
+      return data + other
+    return data + [other]
 
 
   def __len__(self):
@@ -124,7 +126,7 @@ class Fluid:
 
   def __str__(self):
     if self.__dict__["_data"] == None: return ""
-    s = yaml.dump(self.normalize())
+    s = yaml.dump(self.normalize(), )
     return s
 
   def __repr__(self):
