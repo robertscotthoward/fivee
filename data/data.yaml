@@ -75,6 +75,7 @@ conditions:
     action: N-
 
 damagetypes:
+  # https://www.gamersdecide.com/articles/dnd-best-damage-types
   Acid: ~
   Bludgeoning: ~
   Cold: ~

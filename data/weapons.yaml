@@ -1,7 +1,185 @@
 club:
-  name: Club
-  cost: 1sp
+  cost: 1 sp
   damage: 1d4 bludgeoning
   weight: 2 lbs
-  properties: light
-  
+  type: melee, light
+dagger:
+  cost: 2 gp
+  damage: 1d4 piercing
+  weight: 1 lbs
+  type: melee, finesse, light, thrown (range 20/60)
+greatclub:
+  cost: 2 sp
+  damage: 1d8 bludgeoning
+  weight: 10 lbs
+  type: melee, two-handed
+handaxe:
+  cost: 5 gp
+  damage: 1d6 slashing
+  weight: 2 lbs
+  type: melee, light, thrown (range 20/60)
+javelin:
+  cost: 5 sp
+  damage: 1d6 piercing
+  weight: 2 lbs
+  type: melee, thrown (range 30/120)
+light hammer:
+  cost: 2 gp
+  damage: 1d4 bludgeoning
+  weight: 2 lbs
+  type: melee, light, thrown (range 20/60)
+mace:
+  cost: 5 gp
+  damage: 1d6 bludgeoning
+  weight: 4 lbs
+  type: melee
+quarterstaff:
+  cost: 2 sp
+  damage: 1d6 bludgeoning
+  weight: 4 lbs
+  type: melee, versatile (1d8)
+sickle:
+  cost: 1 gp
+  damage: 1d4 slashing
+  weight: 2 lbs
+  type: melee, light
+spear:
+  cost: 1 gp
+  damage: 1d6 piercing
+  weight: 3 lbs
+  type: thrown (range 20/60), versatile (1d8)
+light crossbow:
+  cost: 25 gp
+  damage: 1d8 piercing
+  weight: 5 lbs
+  type: ranged, ammunition (range 80/320), loading, two-handed
+dart:
+  cost: 5 cp
+  damage: 1d4 piercing
+  weight: 1/4 lbs
+  type: ranged, finesse, thrown (range 20/60)
+shortbow:
+  cost: 25 gp
+  damage: 1d6 piercing
+  weight: 2 lbs
+  type: ranged, ammunition (range 80/320), two-handed
+sling:
+  cost: 1 sp
+  damage: 1d4 bludgeoning
+  weight: —
+  type: ranged, ammunition (range 30/120)
+battleaxe:
+  cost: 10 gp
+  damage: 1d8 slashing
+  weight: 4 lbs
+  type: melee, martial, versatile (1d10)
+flail:
+  cost: 10 gp
+  damage: 1d8 bludgeoning
+  weight: 2 lbs
+  type: melee, martial
+glaive:
+  cost: 20 gp
+  damage: 1d10 slashing
+  weight: 6 lbs
+  type: melee, martial, heavy, reach, two-handed
+greataxe:
+  cost: 30 gp
+  damage: 1d12 slashing
+  weight: 7 lbs
+  type: melee, martial, heavy, two-handed
+greatsword:
+  cost: 50 gp
+  damage: 2d6 slashing
+  weight: 6 lbs
+  type: melee, martial, heavy, two-handed
+halberd:
+  cost: 20 gp
+  damage: 1d10 slashing
+  weight: 6 lbs
+  type: melee, martial, heavy, reach, two-handed
+lance:
+  cost: 10 gp
+  damage: 1d12 piercing
+  weight: 6 lbs
+  type: reach, special
+longsword:
+  cost: 15 gp
+  damage: 1d8 slashing
+  weight: 3 lbs
+  type: melee, martial, versatile (1d10)
+maul:
+  cost: 10 gp
+  damage: 2d6 bludgeoning
+  weight: 10 lbs
+  type: melee, martial, heavy, two-handed
+morningstar:
+  cost: 15 gp
+  damage: 1d8 piercing
+  weight: 4 lbs
+  type: melee, martial
+pike:
+  cost: 5 gp
+  damage: 1d10 piercing
+  weight: 18 lbs
+  type: melee, martial, heavy, reach, two-handed
+rapier:
+  cost: 25 gp
+  damage: 1d8 piercing
+  weight: 2 lbs
+  type: melee, martial, finesse
+scimitar:
+  cost: 25 gp
+  damage: 1d6 slashing
+  weight: 3 lbs
+  type: melee, martial, finesse, light
+shortsword:
+  cost: 10 gp
+  damage: 1d6 piercing
+  weight: 2 lbs
+  type: melee, martial, finesse, light
+trident:
+  cost: 5 gp
+  damage: 1d6 piercing
+  weight: 4 lbs
+  type: melee, martial, thrown (range 20/60), versatile (1d8)
+war pick:
+  cost: 5 gp
+  damage: 1d8 piercing
+  weight: 2 lbs
+  type: melee, martial
+warhammer:
+  cost: 15 gp
+  damage: 1d8 bludgeoning
+  weight: 2 lbs
+  type: melee, martial, versatile (1d10)
+whip:
+  cost: 2 gp
+  damage: 1d4 slashing
+  weight: 3 lbs
+  type: melee, martial, finesse, reach
+blowgun:
+  cost: 10 gp
+  damage: 1 piercing
+  weight: 1 lbs
+  type: ranged, martial, ammunition (range 25/100), loading
+crossbow, hand:
+  cost: 75 gp
+  damage: 1d6 piercing
+  weight: 3 lbs
+  type: ranged, martial, ammunition (range 30/120), light, loading
+crossbow, heavy:
+  cost: 50 gp
+  damage: 1d10 piercing
+  weight: 18 lbs
+  type: ranged, martial, ammunition (range 100/400), heavy, loading, two-handed
+longbow:
+  cost: 50 gp
+  damage: 1d8 piercing
+  weight: 2 lbs
+  type: ranged, martial, ammunition (range 150/600), heavy, two-handed
+net:
+  cost: 1 gp
+  damage: —
+  weight: 3 lbs
+  type: ranged, martial, special, thrown (range 5/15)

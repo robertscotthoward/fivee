@@ -18,13 +18,12 @@ class Dice:
     """
     self.dice = dice
     # See https://pythex.org/
-    match = re.search(r"(?P<N>[0-9]+)?d(?P<D>[0-9]+)((?P<SIGN>[+-])(?P<A>[0-9]+))?", dice)
-    if not match:
-      raise Exception('Invalid dice string. Expected format "NdD±A"')
-    self.N = int(match.group("N") or "1")
-    self.D = int(match.group("D") or "100")
-    self.A = int(match.group("A") or "0")
-    self.SIGN = match.group("SIGN") or "+"
+
+    N, D, A, SIGN, AFTER = Dice.Parse(dice)
+    self.N = N
+    self.D = D
+    self.A = A
+    self.SIGN = SIGN
     random.seed(seed)
 
   def Role(self):
@@ -37,6 +36,18 @@ class Dice:
         n -= self.A
     return n
 
+  def Parse(dice):
+    match = re.search(r"(?P<N>[0-9]+)?d(?P<D>[0-9]+)((?P<SIGN>[+-])(?P<A>[0-9]+))?(?P<AFTER>.+)?", dice)
+    if not match:
+      raise Exception('Invalid dice string. Expected format "NdD±A"')
+    N = int(match.group("N") or "1")
+    D = int(match.group("D") or "100")
+    A = int(match.group("A") or "0")
+    SIGN = match.group("SIGN") or "+"
+    AFTER = match.group("AFTER") or ""
+    return N, D, A, SIGN, AFTER
+
+
   def __str__(self):
     return str(self.Role())
 
@@ -45,25 +56,3 @@ class Dice:
 
   def __float__(self):
     return float(self.Role())
-
-
-class DiceTests(unittest.TestCase):
-  def Role10(self, dice, expected):
-    dice = Dice(dice, 123)
-    a = [str(dice.Role()) for x in range(10)]
-    r = ','.join(a)
-    if r != expected:
-        print(r)
-    self.assertEqual(expected, r)
-
-  def test_roles(self):
-      self.Role10("2d10", "6,9,7,8,18,12,4,9,15,7")
-      self.Role10("1d2", "1,2,1,2,2,1,1,2,2,2")
-      self.Role10("2d2", "3,3,3,3,4,2,3,3,2,3")
-      self.Role10("3d6+3", "8,11,13,14,8,14,13,9,13,13")
-      self.Role10("3d6-3", "2,5,7,8,2,8,7,3,7,7")
-      self.Role10("d2-1", "0,1,0,1,1,0,0,1,1,1")
-
-
-if __name__ == '__main__':
-    unittest.main()

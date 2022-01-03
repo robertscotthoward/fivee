@@ -60,6 +60,10 @@ def WriteYaml(fn, obj):
     yaml.dump(obj, f)
 
 
+def ValidateYaml(obj, cls):
+  "Ensure that an object (obj) conforms to the structure defined in a class (cls)."
+
+
 def GetDataPath(fn):
   '''
   @fn is a relative path; e.g. "x.txt" or "mystuff/x.txt"

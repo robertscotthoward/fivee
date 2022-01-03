@@ -24,6 +24,8 @@ class Fluid:
       self.__dict__["_data"] = data
     elif type(data) is list:
       self.__dict__["_data"] = data
+    elif type(data) is str:
+      self.__dict__["_data"] = ParseYaml(data)
     elif not data:
       self.__dict__["_data"] = None
     else:
@@ -133,3 +135,13 @@ class Fluid:
     if self.__dict__["_data"] == None: return ""
     s = yaml.dump(self.normalize())
     return f'''"Fluid("{s}")'''
+
+
+  # ===== STATIC =====
+  def validate(Class, Object):
+    """
+    @Class (Fluid) contains the schema to valid @Object
+    @Object (Fluid) contains the data to be validated
+    """
+
+

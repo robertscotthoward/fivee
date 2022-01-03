@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{255ac952-41e0-47ea-bd63-5e35c5e3119c}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>tests.py</StartupFile>
+    <StartupFile>test\test_weight.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -21,16 +21,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="data.py" />
+    <Compile Include="party.py" />
+    <Compile Include="base.py" />
+    <Compile Include="player.py" />
     <Compile Include="money.py" />
     <Compile Include="fluid.py" />
+    <Compile Include="test\test_data.py" />
     <Compile Include="test\test_dice.py" />
     <Compile Include="test\test_fluid.py" />
     <Compile Include="test\test_money.py" />
+    <Compile Include="test\test_weight.py" />
+    <Compile Include="test\test_weapon.py" />
     <Compile Include="test\test_tools.py" />
     <Compile Include="test\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tests.py" />
+    <Compile Include="damage.py" />
+    <Compile Include="weight.py" />
     <Compile Include="weapon.py" />
     <Compile Include="dice.py" />
     <Compile Include="main.py" />
