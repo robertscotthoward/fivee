@@ -32,6 +32,19 @@ classes:
             - name: exact
               hitpoints: 6+C
 
+  ranger:
+    hitdice: 1d8
+    hitpoints:
+      condition:
+        - test: Level=1
+          hitpoints: 10+C
+        - test: Level>1
+          choice:
+            - name: random
+              hitpoint: 1d8+C
+            - name: exact
+              hitpoints: 6+C
+
 conditions:
   # First letter is you. Second letter is them; e.g. attack of "N-" means you cannot attack, and they attack normally.
   # A   Advantage
