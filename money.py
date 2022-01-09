@@ -31,7 +31,7 @@ class Money:
         i = self.types.index(C)
         coins[i] += N
       except ex:
-        raise "Invalid coin expression '" + e + "'"
+        raise "Invalid coin expression '" + ex + "'"
     return coins
 
   def Add(self, amounts):

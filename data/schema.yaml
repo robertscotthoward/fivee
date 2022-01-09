@@ -1,0 +1,56 @@
+root:
+  type: dict
+  properties:
+    abilities:
+      type: list
+      of: ability
+    classes:
+      type: dict
+      of: class
+    conditions:
+      type: list
+      of: condition
+    hitpoints:
+      type: dict
+      properties:
+        switch:
+          type: list
+          of: trigger_condition
+        
+ability:
+  type: dict
+  properties:
+    abbr:
+      required: True
+    symbol:
+      required: True
+    name:
+      required: True
+
+class:
+  type: set
+  properties:
+    hitdice:
+      type: string
+    hitpoints:
+      type: hitpoints
+
+condition:
+  type: dict
+  properties:
+    
+
+switch:
+  type: dict
+  properties:
+    case: 
+      type: string
+      required: True
+
+choice: 
+  type: dict
+  properties:
+    name:
+      type: string
+    hitpoints:
+

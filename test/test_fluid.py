@@ -5,17 +5,15 @@ from tools import *
 from fluid import Fluid
 
 
-class ToolsTests(unittest.TestCase):
-  def test_Fluid(self):
-    # Pick some useful YAML string that might cover a bunch of tests.
-    o = ParseYaml('''
+data1 = '''
 animals: [bird, dog, cat]
-fred:
-  first: "Fred"
-  last: "Flintstone"
-wilma:
-  first: "Wilma"
-  last: "Flintstone"
+people:
+  fred:
+    first: "Fred"
+    last: "Flintstone"
+  wilma:
+    first: "Wilma"
+    last: "Flintstone"
 states:
   - name: Arizona
     capital: Phoenix
@@ -41,7 +39,20 @@ pets:
       - sleep
       - eat
       - sniff
-    ''')
+'''
+
+class ToolsTests(unittest.TestCase):
+  def test_aaa(self):
+    f = Fluid(ParseYaml(data1))
+
+    for x in f:
+      print(x)
+
+
+
+  def test_Fluid(self):
+    # Pick some useful YAML string that might cover a bunch of tests.
+    o = ParseYaml(data1)
 
     # Create a Fluid object from the YAML
     f = Fluid(o)
@@ -54,14 +65,14 @@ pets:
     with self.assertRaises(IndexError):
       f.animals[10]
 
-    self.assertEqual("Fred", f.fred.first)
-    self.assertEqual("Flintstone", f.fred.last)
-    self.assertEqual("Wilma", f.wilma.first)
+    self.assertEqual("Fred", f.people.fred.first)
+    self.assertEqual("Flintstone", f.people.fred.last)
+    self.assertEqual("Wilma", f.people.wilma.first)
     self.assertEqual("Arizona", f.states[0].name)
     self.assertEqual("Phoenix", f.states[0].capital)
     self.assertEqual("New York", f.states[2].name)
     self.assertEqual("Albany", f.states[2].capital)
-
+      
     f.states[2].capital = "Whatever"
     self.assertEqual("Whatever", f.states[2].capital)
 

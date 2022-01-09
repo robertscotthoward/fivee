@@ -22,10 +22,10 @@ classes:
   fighter:
     hitdice: 1d10
     hitpoints:
-      condition:
-        - test: Level=1
+      switch:
+        - case: Level=1
           hitpoints: 10+C
-        - test: Level>1
+        - case: Level>1
           choice:
             - name: random
               hitpoint: 1d10+C

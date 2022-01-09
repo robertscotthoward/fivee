@@ -1,7 +1,7 @@
 import unittest
 import os
 import yaml
-from tools import *
+import tools
 
 
 class Fluid:
@@ -22,12 +22,19 @@ class Fluid:
     "Called when creating a new object of this class."
     if type(data) is dict:
       self.__dict__["_data"] = data
+      self.__dict__["_type"] = 'dict'
     elif type(data) is list:
       self.__dict__["_data"] = data
+      self.__dict__["_type"] = 'list'
     elif type(data) is str:
-      self.__dict__["_data"] = ParseYaml(data)
+      self.__dict__["_data"] = tools.ParseYaml(data)
+      self.__dict__["_type"] = 'dict'
+    elif type(data) is Fluid:
+      self.__dict__["_data"] = data.__dict__['_data']
+      self.__dict__["_type"] = data.__dict__['type']
     elif not data:
       self.__dict__["_data"] = None
+      self.__dict__["_type"] = None
     else:
       raise Exception(f"Unexpected type '{type(data)}'")
 
@@ -37,12 +44,15 @@ class Fluid:
     data = self.__dict__["_data"]
     if name in data:
       o = data[name]
+      if not o:
+        return None
       if type(o) is dict or type(o) is list:
         data[name] = Fluid(o)
         return data[name]
       return o
-    data[name] = Fluid()
-    return data[name]
+    # raising this exception allows getattr to return its default value.
+    raise AttributeError
+    return None
 
   def __setattr__(self, name, value):
     "Called when: myObject.SomeName = SomeValue"
@@ -120,6 +130,14 @@ class Fluid:
       return data + other
     return data + [other]
 
+  def __iter__(self):
+    type = self.__dict__['_type']
+    data = self.__dict__['_data']
+    if type == 'dict' or type == 'list':
+      for i in data:
+        yield i
+    else:
+      raise(f"Unhandled type '{type}'")
 
   def __len__(self):
     if self.__dict__["_data"] == None: return 0

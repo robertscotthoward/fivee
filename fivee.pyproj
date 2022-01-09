@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{255ac952-41e0-47ea-bd63-5e35c5e3119c}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>test\test_weight.py</StartupFile>
+    <StartupFile>test\test_tools.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -54,11 +54,13 @@
   <ItemGroup>
     <Content Include="data\campaigns\rob.yaml" />
     <Content Include="data\campaigns\sample.yaml" />
+    <Content Include="data\schema.yaml" />
     <Content Include="data\data.yaml" />
     <Content Include="data\monsters.yaml" />
     <Content Include="data\weapons.yaml" />
     <Content Include="data\proficiencies.yaml" />
     <Content Include="docs\fluid.md" />
+    <Content Include="docs\schema.md" />
     <Content Include="docs\main.md" />
     <Content Include="README.md" />
   </ItemGroup>
