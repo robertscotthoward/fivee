@@ -9,11 +9,11 @@ data1 = '''
 animals: [bird, dog, cat]
 people:
   fred:
-    first: "Fred"
-    last: "Flintstone"
+    first: Fred
+    last: Flintstone
   wilma:
-    first: "Wilma"
-    last: "Flintstone"
+    first: Wilma
+    last: Flintstone
 states:
   - name: Arizona
     capital: Phoenix

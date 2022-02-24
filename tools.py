@@ -1,7 +1,9 @@
+import datetime
 import unittest
 import os
 import yaml
 from fluid import Fluid
+from dateutil.parser import parse
 
 def subloadYaml(data):
   '''
@@ -65,54 +67,67 @@ def ValidateSchema(obj, cls):
   o = Fluid(obj)
   c = Fluid(cls)
 
+  if not 'root' in c:
+    raise Exception("Schema missing 'root' property.")
   type = c.root.type
 
   ValidateSchema1(c, o, c.root)
 
 def ValidateSchema1(schema, o, c):
   # ================================================================================
+  # @schema is a global constant reference to the schema.
+  # @c is the current schema.
+  # @o is the current object being validated against @c.
   if c.type == 'dict':
     if not isinstance(o._data, dict):
       raise("Expected a dict", str(o))
     if c.properties:
       for pn in c.properties:
         p = c.properties[pn]
-        print(p)
-        v = o._data[pn]
-        type = getattr(c, 'type', 'any')
-        required = getattr(c, 'required', False)
+        t = p['type'] if 'type' in p else 'any'
+        required = p['required'] if 'required' in p else False
 
         # If the property is required but it doesn't exist, then error!
-        if required:
-          if not pn in o._data:
-            raise f"INVALID YAML: Missing required property '{cn}'"
+        if not pn in o._data:
+          if required:
+            raise Exception(f"INVALID YAML: Missing required property '{cn}'")
+          else:
+            continue
 
         # If the type does not match, then error!
         v = o._data[pn]
         if not v:
           continue
-        if type == 'any':
+        if t == 'any':
           pass
-        if type == 'dict':
-          if type(v) != dict:
-            raise f"INVALID YAML: Expected property value of '{pn}' to be '{type}'. Was '{type(v)}' instead"
-        if type == 'list':
-          if type(v) != list:
-            raise f"INVALID YAML: Expected property value of '{pn}' to be '{type}'. Was '{type(v)}' instead"
-        elif type == 'string':
-          if type(v) != str:
-            raise f"INVALID YAML: Expected property value of '{pn}' to be '{type}'. Was '{type(v)}' instead"
-        elif type == 'number':
+        elif t == 'dict':
+          if not isinstance(v, dict):
+            raise Exception(f"INVALID YAML: Expected property value of '{pn}' to be '{type}'. Was '{type(v)}' instead")
+        elif t == 'list':
+          if not isinstance(v, list):
+            raise Exception(f"INVALID YAML: Expected property value of '{pn}' to be '{type}'. Was '{type(v)}' instead")
+        elif t == 'string':
+          if not isinstance(v, str):
+            raise Exception(f"INVALID YAML: Expected property value of '{pn}' to be '{type}'. Was '{type(v)}' instead")
+        elif t == 'number':
           if not isinstance(v, (int, float)):
-            raise f"INVALID YAML: Expected property value of '{pn}' to be a number. Was '{type(v)}' instead"
-        elif type == 'int':
-          if not isinstance(v, (int)):
-            raise f"INVALID YAML: Expected property value of '{pn}' to be a int. Was '{type(v)}' instead"
-        elif type == 'float':
-          if not isinstance(v, (float)):
-            raise f"INVALID YAML: Expected property value of '{pn}' to be a float. Was '{type(v)}' instead"
+            raise Exception(f"INVALID YAML: Expected property value of '{pn}' to be a number. Was '{type(v)}' instead")
+        elif t == 'int' or t == 'integer':
+          if not isinstance(v, int):
+            raise Exception(f"INVALID YAML: Expected property value of '{pn}' to be a int. Was '{type(v)}' instead")
+        elif t == 'float':
+          if not isinstance(v, float):
+            raise Exception(f"INVALID YAML: Expected property value of '{pn}' to be a float. Was '{type(v)}' instead")
+        elif t == 'date':
+          if not isinstance(v, datetime.date):
+            if not isinstance(v, str):
+              raise Exception(f"INVALID YAML: Expected property value of '{pn}' to be a string date. Was '{type(v)}' instead")
+            try:
+              dt = parse(v)
+            except Exception as e:
+              raise Exception(f"INVALID YAML: Expected property value of '{pn}' to be a valid date. Was '{v}' instead. {e}")
         else:
-          raise f"INVALID SCHEMA: 'type' of '{type}' is not defined."
+          raise Exception(f"INVALID SCHEMA: 'type' of '{t}' is not defined.")
 
   # ================================================================================
   elif c.type == 'set':

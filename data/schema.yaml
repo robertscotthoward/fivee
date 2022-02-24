@@ -21,10 +21,13 @@ ability:
   type: dict
   properties:
     abbr:
+      type: str
       required: True
     symbol:
+      type: str
       required: True
     name:
+      type: str
       required: True
 
 class:

@@ -84,23 +84,26 @@ places:
 
   def test_yamlSchema1(self):
     cls = """
-first:
-  type: string
-  required: True
-last:
-  type: string
-  required: True
-age:
-  type: integer
-dob:
-  type: date
+root:
+  type: dict
+  properties:
+    first:
+      type: string
+      required: True
+    last:
+      type: string
+      required: True
+    age:
+      type: integer
+    dob:
+      type: date
 """
 
     obj = """
 first: Fred
 last: Flintstone
 age: 20
-dob: 2000-01-01
+dob: Jun 30, 2021
 """
 
     ValidateSchema(obj, cls)
